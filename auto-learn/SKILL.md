@@ -63,7 +63,7 @@ For the chosen enforcement:
 
 ## Phase 5: Verify
 
-Run tests, auto-fix failures (retry up to 5 times) to confirm:
+Follow the /auto-fix skill procedure to run tests and fix failures. Confirm:
 - Tests still pass after config changes
 - New rule/type constraint is active
 

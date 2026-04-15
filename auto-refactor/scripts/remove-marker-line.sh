@@ -14,7 +14,7 @@ if [[ ! -f "$FILE" ]]; then
 fi
 
 # Delete the line
-sed -i'' "${LINE}d" "$FILE"
+sed "${LINE}d" "$FILE" > "$FILE.tmp" && mv "$FILE.tmp" "$FILE"
 
 # Clean consecutive blank lines (collapse to single)
-sed -i'' '/^$/N;/^\n$/d' "$FILE"
+sed '/^$/N;/^\n$/d' "$FILE" > "$FILE.tmp" && mv "$FILE.tmp" "$FILE"

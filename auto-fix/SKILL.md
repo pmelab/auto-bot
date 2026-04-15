@@ -40,7 +40,7 @@ Return result: `{ passed: boolean, error_output?: string }`
    a. If match found in existing entries → increment `count`, update `last_seen`
    b. If no match → add new entry with `count: 1`, `first_seen: now`, `last_seen: now`
 3. Check for escalation: if any entry has `count >= 3`:
-   - Attempt to turn the error into a deterministic enforcement (type constraint, linter rule, or AGENTS.md rule) with full error entry context, then remove entry
+   - Follow the /auto-learn skill procedure to turn the error into deterministic enforcement, passing the full error entry as input. Then remove the entry.
    - If enforcement cannot be applied: log warning, keep entry
 4. Write updated JSON:
    Run: `echo '$UPDATED_JSON' | bash "$SKILL_DIR/scripts/error-file-write.sh" "$REPO_HASH"`

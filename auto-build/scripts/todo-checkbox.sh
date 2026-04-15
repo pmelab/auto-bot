@@ -19,4 +19,4 @@ if ! sed -n "${LINE}p" "$TODO_FILE" | grep -q '\- \[ \]'; then
   exit 1
 fi
 
-sed -i'' "${LINE}s/- \[ \]/- [x]/" "$TODO_FILE"
+sed "${LINE}s/- \[ \]/- [x]/" "$TODO_FILE" > "$TODO_FILE.tmp" && mv "$TODO_FILE.tmp" "$TODO_FILE"

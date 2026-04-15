@@ -30,7 +30,7 @@ SKILL_DIR: `~/.agent/skills/auto-build`
 
 ## Phase 2: Plan
 
-1. Interview the user relentlessly about every aspect of the raw input until reaching shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one. (agent judgment)
+1. Follow the /grill-me skill procedure — pass the raw input as the topic. Interview the user relentlessly until reaching shared understanding.
 2. After reaching shared understanding, build TODO.md:
 
 ### TODO.md Structure
@@ -61,7 +61,7 @@ SKILL_DIR: `~/.agent/skills/auto-build`
 
 ### Baseline check
 
-Before first package: run tests, auto-fix failures (retry up to 5 times).
+Before first package: follow the /auto-fix skill procedure to run tests and fix failures.
 - If fixed → commit: `fix: resolve pre-existing test failures`
 - If errors cannot be resolved → abort. Do not start packages on a red baseline.
 
@@ -76,7 +76,7 @@ Before first package: run tests, auto-fix failures (retry up to 5 times).
 3. Run: `bash "$SKILL_DIR/scripts/todo-checkbox.sh" "$LINE"`
    - On exit 1: error — line mismatch, investigate
 
-4. Run tests, auto-fix failures (retry up to 5 times)
+4. Follow the /auto-fix skill procedure to run tests and fix failures.
 5. If tests are still red after retries:
    - Ask user for help
    - If user resolves → re-run tests, continue if green

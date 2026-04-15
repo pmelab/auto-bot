@@ -36,7 +36,7 @@ Commit all current changes (RF code comments + REFACTOR.md) as-is:
 For each item (one at a time):
 
 1. Read surrounding code context (±30 lines for code markers; for REFACTOR.md items, explore relevant files)
-2. Ask clarifying questions (agent judgment):
+2. Follow the /grill-me skill procedure to ask clarifying questions:
    - What's the desired end state?
    - Any constraints (backwards compat, API stability, performance)?
    - Should this be combined with another item?
@@ -52,7 +52,7 @@ After all items interviewed:
 
 Run: `echo "$ALL_ITEM_TEXTS" | bash "$SKILL_DIR/scripts/extract-imperative-patterns.sh"`
 - Parse JSON array: `[{keyword, sentence}]`
-- For each match: turn the learning into deterministic enforcement (type constraint, linter rule, or AGENTS.md rule)
+- For each match: follow the /auto-learn skill procedure to turn the learning into deterministic enforcement
 - Skip if no matches
 
 ## Phase 3: Execute
@@ -64,7 +64,7 @@ Run: `echo "$ALL_ITEM_TEXTS" | bash "$SKILL_DIR/scripts/extract-imperative-patte
    - For code markers: `bash "$SKILL_DIR/scripts/remove-marker-line.sh" "$FILE" "$LINE"`
    - For REFACTOR.md items: `bash "$SKILL_DIR/scripts/remove-refactor-bullet.sh" "$LINE"`
      - On exit 2: REFACTOR.md now empty, will delete in cleanup
-3. Run tests, auto-fix failures (retry up to 5 times)
+3. Follow the /auto-fix skill procedure to run tests and fix failures.
 4. If tests are still red after retries → stop, do not proceed
 5. Stage all changes for this item
 6. Commit: `refactor: <description from item>`

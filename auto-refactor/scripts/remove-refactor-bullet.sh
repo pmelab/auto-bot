@@ -13,7 +13,7 @@ if [[ ! -f "$REFACTOR_FILE" ]]; then
   exit 1
 fi
 
-sed -i'' "${LINE}d" "$REFACTOR_FILE"
+sed "${LINE}d" "$REFACTOR_FILE" > "$REFACTOR_FILE.tmp" && mv "$REFACTOR_FILE.tmp" "$REFACTOR_FILE"
 
 # Check if any bullets remain
 if ! grep -q '^ *- ' "$REFACTOR_FILE" 2>/dev/null; then

@@ -10,7 +10,7 @@ if [[ ! -f "$TODO_FILE" ]]; then
   exit 2
 fi
 
-COUNT=$(grep -c '^ *- \[ \]' "$TODO_FILE" 2>/dev/null || echo "0")
+COUNT=$(grep -c '^ *- \[ \]' "$TODO_FILE" 2>/dev/null) || COUNT=0
 
 if [[ "$COUNT" -eq 0 ]]; then
   exit 0
